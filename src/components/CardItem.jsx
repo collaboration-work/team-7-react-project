@@ -1,48 +1,17 @@
-const CardItem = () => {
+const CardItem = ({ thumbnail, title, price }) => {
   return (
     <div className="container text-center">
       <div className="row">
         <div className="col">
-          <div class="card" style={{ width: "18rem" }}>
-            <img src="..." class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="col">
-          <div class="card" style={{ width: "18rem" }}>
-            <img src="..." class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div class="card" style={{ width: "18rem" }}>
-            <img src="..." class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="btn btn-primary">
+          <div className="card" style={{ width: "18rem" }}>
+            <img
+              src={thumbnail}
+              alt="There is no book cover for this product!"
+            />
+            <div className="card-body">
+              <span className="card-title">{title}</span>{" "}
+              <span className="card-title">{price}</span>
+              <a href="#" className="btn btn-primary">
                 Go somewhere
               </a>
             </div>
@@ -52,5 +21,4 @@ const CardItem = () => {
     </div>
   );
 };
-
 export default CardItem;
