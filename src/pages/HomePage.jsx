@@ -1,42 +1,13 @@
-import React, { useState, useEffect } from "react";
-import CardItem from "../components/CardItem";
+// After importing the context hook, we create a loop to iterate through the books! To ensure that the loop works, we use console log!
 
-const Homepage = () => {
-  const [books, setBooks] = useState([]);
-  const apiKey = "AIzaSyCf0-8UvYIxpo88-8_sTInFOi-9Hf-Jr4g";
+import { useContext } from "react";
+import { BookContext } from "../context/Bookcontext";
 
-  useEffect(() => {
-    const fetchBooks = async () => {
-      try {
-        const response = await fetch(
-          `https://www.googleapis.com/books/v1/volumes?q=*&maxResults=30&key=${apiKey}`
-        );
-
-        const data = await response.json();
-
-        if (data.items) {
-          // Filter books that have imageLinks.thumbnail
-          const filteredBooks = data.items.filter(
-            (book) =>
-              book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail
-          );
-
-          setBooks(filteredBooks);
-        } else {
-          console.error("No books found in the response");
-        }
-      } catch (error) {
-        console.error("Error fetching books:", error.message);
-      }
-    };
-    fetchBooks();
-  }, []);
-
-  return (
-    <div>
-      <CardItem books={books} />
-    </div>
-  );
+const HomePage = () => {
+  const { books } = useContext(BookContext);
+  return books.map((e) => {
+    console.log(e);
+  });
 };
 
-export default Homepage;
+export default HomePage;
