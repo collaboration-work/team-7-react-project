@@ -1,24 +1,29 @@
-const CardItem = ({ thumbnail, title, price }) => {
+import { Link } from "react-router-dom";
+
+const CardItem = ({ books }) => {
   return (
     <div className="container text-center">
       <div className="row">
-        <div className="col">
-          <div className="card" style={{ width: "18rem" }}>
-            <img
-              src={thumbnail}
-              alt="There is no book cover for this product!"
-            />
-            <div className="card-body">
-              <span className="card-title">{title}</span>{" "}
-              <span className="card-title">{price}</span>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
+        {books.map((book) => (
+          <div key={book.id} className="col">
+            <Link to={`/books/${book.id}`}>
+              <div className="card" style={{ width: "18rem" }}>
+                <img
+                  src={book.volumeInfo.imageLinks.thumbnail}
+                  className="card-img-top"
+                  alt={book.volumeInfo.title}
+                />
+                <div className="card-body">
+                  <h5 className="card-title">{book.volumeInfo.title}</h5>
+                  <button className="btn btn-primary">Go somewhere</button>
+                </div>
+              </div>
+            </Link>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );
 };
+
 export default CardItem;
