@@ -1,6 +1,8 @@
 // To be able to search by category, we need the "fetch" function.
 // We import the "fetch" function from our custom hook (context)!
 
+// We create (handleCategorySelect) function and pass the function for each catalog's 'onClick' event.
+
 import { Link } from "react-router-dom";
 import { BsHandbag, BsBrightnessHigh, BsFillMoonFill } from "react-icons/bs";
 
@@ -10,11 +12,15 @@ import { useContext } from "react";
 const Header = ({ darkMode, toggleTheme }) => {
   const { fetchBooksByCategory } = useContext(BookContext);
 
+  const handleCategorySelect = (category) => {
+    fetchBooksByCategory("", category);
+  };
+
   return (
     <header data-bs-theme={darkMode ? "dark" : "light"}>
       <nav className="navbar navbar-expand-md bg-body-tertiary">
         <div className="container-fluid">
-          <Link to="/." className="navbar-brand">
+          <Link to="/" className="navbar-brand">
             HI Library
           </Link>
 
@@ -49,7 +55,7 @@ const Header = ({ darkMode, toggleTheme }) => {
             >
               <ul className="navbar-nav me-auto mb-lg-0">
                 <li className="nav-item">
-                  <Link to="./" className="nav-link active">
+                  <Link to="/" className="nav-link active">
                     Home
                   </Link>
                 </li>
@@ -70,40 +76,104 @@ const Header = ({ darkMode, toggleTheme }) => {
                   </a>
                   <ul className="dropdown-menu">
                     <li>
-                      <Link to="./" className="dropdown-item">
+                      <a
+                        href="#"
+                        onClick={() => handleCategorySelect("Adventure")}
+                        className="dropdown-item"
+                      >
                         Adventure
-                      </Link>
+                      </a>
                     </li>
                     <li>
-                      <Link className="dropdown-item">Biography</Link>
+                      <a
+                        href="#"
+                        onClick={() => handleCategorySelect("Biography")}
+                        className="dropdown-item"
+                      >
+                        Biography
+                      </a>
                     </li>
                     <li>
-                      <Link className="dropdown-item">Classics</Link>
+                      <a
+                        href="#"
+                        onClick={() => handleCategorySelect("Classics")}
+                        className="dropdown-item"
+                      >
+                        Classics
+                      </a>
                     </li>
                     <li>
-                      <Link className="dropdown-item">Fantasy</Link>
+                      <a
+                        href="#"
+                        onClick={() => handleCategorySelect("Fantasy")}
+                        className="dropdown-item"
+                      >
+                        Fantasy
+                      </a>
                     </li>
                     <li>
-                      <Link className="dropdown-item">Fiction</Link>
+                      <a
+                        href="#"
+                        onClick={() => handleCategorySelect("Fiction")}
+                        className="dropdown-item"
+                      >
+                        Fiction
+                      </a>
                     </li>
                     <li>
-                      <Link className="dropdown-item">Horror</Link>
+                      <a
+                        href="#"
+                        onClick={() => handleCategorySelect("Horror")}
+                        className="dropdown-item"
+                      >
+                        Horror
+                      </a>
                     </li>
                     <li>
-                      <Link className="dropdown-item">History</Link>
+                      <a
+                        href="#"
+                        onClick={() => handleCategorySelect("History")}
+                        className="dropdown-item"
+                      >
+                        History
+                      </a>
                     </li>
 
                     <li>
-                      <Link className="dropdown-item">Mystery</Link>
+                      <a
+                        href="#"
+                        onClick={() => handleCategorySelect("Mystery")}
+                        className="dropdown-item"
+                      >
+                        Mystery
+                      </a>
                     </li>
                     <li>
-                      <Link className="dropdown-item">Romance</Link>
+                      <a
+                        href="#"
+                        onClick={() => handleCategorySelect("Romance")}
+                        className="dropdown-item"
+                      >
+                        Romance
+                      </a>
                     </li>
                     <li>
-                      <Link className="dropdown-item">Science fiction</Link>
+                      <a
+                        href="#"
+                        onClick={() => handleCategorySelect("Science Fiction")}
+                        className="dropdown-item"
+                      >
+                        Science fiction
+                      </a>
                     </li>
                     <li>
-                      <Link className="dropdown-item">Thriller</Link>
+                      <a
+                        href="#"
+                        onClick={() => handleCategorySelect("Thriller")}
+                        className="dropdown-item"
+                      >
+                        Thriller
+                      </a>
                     </li>
                   </ul>
                 </li>
