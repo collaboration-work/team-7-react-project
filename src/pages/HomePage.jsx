@@ -1,12 +1,14 @@
-// After importing the context hook, we create a loop to iterate through the books! To ensure that the loop works, we use console log!
+// Now that our loop is functioning smoothly, it's time to craft a component for each iteration.
+// Our desired component is the "CardItem". We'll import the "CardItem" and pass the books as props to it
 
 import { useContext } from "react";
 import { BookContext } from "../context/Bookcontext";
+import CardItem from "../components/CardItem";
 
 const HomePage = () => {
   const { books } = useContext(BookContext);
   return books.map((e) => {
-    console.log(e);
+    return <CardItem books={books} />;
   });
 };
 
