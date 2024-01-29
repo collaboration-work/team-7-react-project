@@ -1,19 +1,27 @@
-// To be able to search by category, we need the "fetch" function.
-// We import the "fetch" function from our custom hook (context)!
-
-// We create (handleCategorySelect) function and pass the function for each catalog's 'onClick' event.
+// write a function for "input".
+// write a function for "search" button to get text from "input" and pass it to "fetch" function with help of "useSate".
 
 import { Link } from "react-router-dom";
 import { BsHandbag, BsBrightnessHigh, BsFillMoonFill } from "react-icons/bs";
 
 import { BookContext } from "../context/Bookcontext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const Header = ({ darkMode, toggleTheme }) => {
+  const [searchInput, setSearchInput] = useState("");
   const { fetchBooksByCategory } = useContext(BookContext);
 
   const handleCategorySelect = (category) => {
     fetchBooksByCategory("", category);
+  };
+
+  const handleInputChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  const handleSearchBook = (e) => {
+    e.preventDefault();
+    fetchBooksByCategory(searchInput, "");
   };
 
   return (
@@ -200,12 +208,17 @@ const Header = ({ darkMode, toggleTheme }) => {
                 )}
               </div>
 
-              <form className="d-flex" role="search">
+              <form
+                className="d-flex"
+                role="search"
+                onSubmit={handleSearchBook}
+              >
                 <input
                   className="form-control me-2"
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
+                  onChange={handleInputChange}
                 />
                 <button className="btn btn-outline-success" type="submit">
                   Search
